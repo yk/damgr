@@ -1,0 +1,13 @@
+<h3>Shopping List</h3>
+<ul>
+    <li *ngFor="let shopItem of shopItems">
+        <span>{{shopItem.name}}</span>
+        <button (click)="removeShopItem(shopItem)">-</button>
+    </li>
+    <li>
+        <form (submit)="addShopItem()">
+            <input [(ngModel)]="newShopItemName" name="nsin">
+            <button [disabled]="!newShopItemName">+</button>
+        </form>
+    </li>
+</ul>
