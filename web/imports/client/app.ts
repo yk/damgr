@@ -17,8 +17,9 @@ import '../methods.ts';
  
 @Component({
       selector: 'app',
-        templateUrl: Constants.BASE + 'imports/client/app.html',
-        directives: [ROUTER_DIRECTIVES, Nav],
+      //template: 'hi',
+       templateUrl: Constants.BASE + 'imports/client/app.html',
+       directives: [ROUTER_DIRECTIVES, Nav],
 })
 class DaMgrApp { }
  
@@ -27,7 +28,7 @@ bootstrap(DaMgrApp, [
     provideRouter([
         //{ path: '', component: Home},
         //{ path: 'account', component: Account},
-        { path: '', redirectTo: '/shopping-list'},
+        { path: '', redirectTo: '/shopping-list', pathMatch: 'full'},
         { path: 'shopping-list', component: ShoppingList},
     ]),
     disableDeprecatedForms(),
