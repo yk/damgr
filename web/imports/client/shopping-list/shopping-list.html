@@ -1,13 +1,19 @@
 <h3>Shopping List</h3>
-<ul>
-    <li *ngFor="let shopItem of shopItems">
-        <span>{{shopItem.name}}</span>
-        <button (click)="removeShopItem(shopItem)">-</button>
-    </li>
-    <li>
+<div class="shopping-list">
+    <md-card *ngFor="let shopItem of shopItems">
+        <md-card-title>
+            <span>{{shopItem.name}}</span>
+            <button md-icon-button md-raised-button (click)="removeShopItem(shopItem)">
+                <md-icon>remove</md-icon>
+            </button>
+        </md-card-title>
+    </md-card>
+    <md-card>
         <form (submit)="addShopItem()">
-            <input [(ngModel)]="newShopItemName" name="nsin">
-            <button [disabled]="!newShopItemName">+</button>
+            <md-input [(ngModel)]="newShopItemName" placeholder="New Item" name="nsitem"></md-input>
+            <button md-fab color="primary" [disabled]="!newShopItemName">
+                <md-icon>add</md-icon>
+            </button>
         </form>
-    </li>
-</ul>
+    </md-card>
+</div>

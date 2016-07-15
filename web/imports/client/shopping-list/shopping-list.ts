@@ -6,10 +6,16 @@ import { ShopItems } from '../../collections/collections';
 import { MeteorComponent } from 'angular2-meteor';
 import { REACTIVE_FORM_DIRECTIVES, FormGroup, FormControl, Validators } from '@angular/forms';
 import {Constants} from '../../constants';
+import {MdButton} from '@angular2-material/button';
+import {MdIcon} from '@angular2-material/icon';
+import {MD_LIST_DIRECTIVES} from '@angular2-material/list';
+import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
+import {MdInput} from '@angular2-material/input';
+
  
 @Component({
     templateUrl: Constants.BASE + 'imports/client/shopping-list/shopping-list.html',
-    directives: [ROUTER_DIRECTIVES, REACTIVE_FORM_DIRECTIVES],
+    directives: [ROUTER_DIRECTIVES, REACTIVE_FORM_DIRECTIVES, MdButton, MdIcon, MD_LIST_DIRECTIVES, MD_CARD_DIRECTIVES, MdInput],
 })
 export class ShoppingList extends MeteorComponent {
     shopItems: Mongo.Cursor<ShopItem>;
