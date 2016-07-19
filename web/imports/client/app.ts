@@ -8,9 +8,9 @@ import { bootstrap } from '@angular/platform-browser-dynamic';
 import {disableDeprecatedForms, provideForms} from '@angular/forms';
 import {HTTP_PROVIDERS} from '@angular/http';
 
-import { Home } from './home/home';
-import { Account } from './account/account';
+import { Login } from './login/login';
 import {Constants} from '../constants';
+import {AuthGuard} from './guards/auth.guard';
 
 import { ShoppingList } from './shopping-list/shopping-list';
 import '../methods.ts';
@@ -22,14 +22,17 @@ import {createOverlayContainer} from '@angular2-material/core/overlay/overlay-co
 import {MdGestureConfig} from '@angular2-material/core/gestures/MdGestureConfig';
 import {MdIconRegistry} from '@angular2-material/icon/icon-registry';
 import {MD_SIDENAV_DIRECTIVES} from '@angular2-material/sidenav';
+import {MD_LIST_DIRECTIVES} from '@angular2-material/list';
 import {MdToolbar} from '@angular2-material/toolbar';
 import {MdButton} from '@angular2-material/button';
 import {MdIcon} from '@angular2-material/icon';
+
+import template from './app.html';
  
 @Component({
     selector: 'app',
-    templateUrl: Constants.BASE + 'imports/client/app.html',
-    directives: [ROUTER_DIRECTIVES, MD_SIDENAV_DIRECTIVES, MdToolbar, MdButton, MdIcon],
+    template,
+    directives: [ROUTER_DIRECTIVES, MD_SIDENAV_DIRECTIVES, MD_LIST_DIRECTIVES, MdToolbar, MdButton, MdIcon],
 })
 class DaMgrApp {
     public views: Object[] = [
@@ -37,16 +40,20 @@ class DaMgrApp {
             name: 'Shopping List',
             path: '/shopping-list'
         },
+        {
+            name: 'Login',
+            path: '/login'
+        },
     ];
 }
  
 bootstrap(DaMgrApp, [
     provide(APP_BASE_HREF, {useValue: Constants.BASE}),
+    AuthGuard,
     provideRouter([
-        //{ path: '', component: Home},
-        //{ path: 'account', component: Account},
         { path: '', redirectTo: '/shopping-list', pathMatch: 'full'},
-        { path: 'shopping-list', component: ShoppingList},
+        { path: 'shopping-list', component: ShoppingList, canActivate: [AuthGuard]},
+        { path: 'login', component: Login},
     ]),
     disableDeprecatedForms(),
     provideForms(),

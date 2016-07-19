@@ -12,9 +12,10 @@ import {MD_LIST_DIRECTIVES} from '@angular2-material/list';
 import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
 import {MdInput} from '@angular2-material/input';
 
+import template from './shopping-list.html';
  
 @Component({
-    templateUrl: Constants.BASE + 'imports/client/shopping-list/shopping-list.html',
+    template,
     directives: [ROUTER_DIRECTIVES, REACTIVE_FORM_DIRECTIVES, MdButton, MdIcon, MD_LIST_DIRECTIVES, MD_CARD_DIRECTIVES, MdInput],
 })
 export class ShoppingList extends MeteorComponent {
