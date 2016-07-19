@@ -45,7 +45,7 @@ export class Login extends MeteorComponent{
             if(err){
                 console.log(err);
             }else{
-                ngZone.run(() => {
+                this.ngZone.run(() => {
                     this.router.navigate(['/']);
                 });
             }
