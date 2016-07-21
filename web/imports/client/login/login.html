@@ -1,9 +1,11 @@
 <h1>Login</h1>
 <div *ngIf="!user">
     <p>Log in using your nethz account!</p>
-    <md-input placeholder="Username" name="username" [(ngModel)]="username"></md-input>
-    <md-input placeholder="Password" name="password" [(ngModel)]="password" type="password"></md-input>
-    <button md-button (click)="login()" [disabled]="!username">Login</button>
+    <form (submit)="login()">
+        <md-input placeholder="Username" name="username" [(ngModel)]="username"></md-input>
+        <md-input placeholder="Password" name="password" [(ngModel)]="password" type="password"></md-input>
+        <button md-button [disabled]="!username">Login</button>
+    </form>
 </div>
 <div *ngIf="!!user">
     <p>Your are already logged in!</p>

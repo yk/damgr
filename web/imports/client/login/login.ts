@@ -31,6 +31,8 @@ export class Login extends MeteorComponent{
         }else{
             this.loginLDAP(this.username, this.password);
         }
+        this.username = '';
+        this.password = '';
     }
 
 
